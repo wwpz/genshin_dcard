@@ -9,9 +9,10 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>genshin_system</module>
-        <module>genshin_web</module>
-        <module>genshin_common</module>
+        <module>genshin-common</module>
+        <module>genshin-modules</module>
+        <module>genshin-gateway</module>
+        <module>genshin-system</module>
     </modules>
 
     <parent>
@@ -22,15 +23,15 @@
     </parent>
 
     <properties>
+        <genshin-version>1.0-SNAPSHOT</genshin-version>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <hutool.version>5.8.11</hutool.version>
         <mybatis-plus.version>3.5.2</mybatis-plus.version>
         <druid.version>1.2.6</druid.version>
-        <swagger2.version>3.0.0</swagger2.version>
-        <swagger2Ui.version>1.9.6</swagger2Ui.version>
         <jjwt.version>0.9.1</jjwt.version>
+        <knife4j.version>3.0.3</knife4j.version>
         <minio.version>7.0.2</minio.version>
         <spring-cloud.version>2020.0.6</spring-cloud.version>
         <spring-cloud-alibaba-dependencies.version>2021.1</spring-cloud-alibaba-dependencies.version>
@@ -38,43 +39,57 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- 公共模块 -->
+            <dependency>
+                <groupId>top.xc27</groupId>
+                <artifactId>genshin-common-core</artifactId>
+                <version>${genshin-version}</version>
+            </dependency>
+
+            <!-- 接口模块 -->
+            <dependency>
+                <groupId>top.xc27</groupId>
+                <artifactId>genshin-common-config</artifactId>
+                <version>${genshin-version}</version>
+            </dependency>
+
+            <!-- Swagger 依赖配置 -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>io.minio</groupId>
                 <artifactId>minio</artifactId>
                 <version>${minio.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
             </dependency>
-            <!--swagger2-->
-            <dependency>
-                <groupId>io.springfox</groupId>
-                <artifactId>springfox-swagger2</artifactId>
-                <version>${swagger2.version}</version>
-            </dependency>
-            <!--swagger2-UI-->
-            <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>swagger-bootstrap-ui</artifactId>
-                <version>${swagger2Ui.version}</version>
-            </dependency>
+
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt</artifactId>
                 <version>${jjwt.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
@@ -82,6 +97,7 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
             <dependency>
                 <groupId>com.alibaba.cloud</groupId>
                 <artifactId>spring-cloud-alibaba-dependencies</artifactId>

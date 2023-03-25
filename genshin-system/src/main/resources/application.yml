@@ -1,0 +1,19 @@
+server:
+  port: 8765
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/genshin_dcard?useUnicode=true&characterEncoding=utf8&useTimezone=true&serverTimezone=GMT%2B8
+    username: root
+    password: 1710885741PCL@@
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jackson:
+    time-zone: GMT+8
+    date-format: java.text.SimpleDateFormat
+    serialization:
+      indent-output: true
+      fail-on-empty-beans: false
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+knife4j:
+  enable: true
