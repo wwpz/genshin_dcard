@@ -39,7 +39,7 @@ import java.util.stream.Collectors;
 //@EnableWebMvc
 public class Knife4jConfig {
 
-    private static final String SWAGGER_TITLE = "HOSPITAL 项目 API 接口文档";
+    private static final String SWAGGER_TITLE = "GenShinDarcard 项目 API 接口文档";
     private static final String VERSION = "3.0.3";
 
     @Bean
@@ -62,7 +62,7 @@ public class Knife4jConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title(Knife4jConfig.SWAGGER_TITLE)
-                .description("hospital项目API接口文档简介")
+                .description("GenShinDarcard项目API接口文档简介")
                 .termsOfServiceUrl("http://127.0.0.1/#/login")
                 .contact(new Contact("PcLing", "", "ok@126.com"))
                 .version(Knife4jConfig.VERSION)
