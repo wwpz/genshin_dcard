@@ -1,19 +1,24 @@
 server:
-  port: 8765
+  port: 8081
 spring:
+  application:
+    name: service-system
   datasource:
-    url: jdbc:mysql://localhost:3306/genshin_dcard?useUnicode=true&characterEncoding=utf8&useTimezone=true&serverTimezone=GMT%2B8
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/genshin_dcard?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=Asia/Shanghai
     username: root
-    password: 1710885741PCL@@
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: ..
+  cloud:
+    nacos:
+      server-addr: ..
+
   jackson:
     time-zone: GMT+8
-    date-format: java.text.SimpleDateFormat
-    serialization:
-      indent-output: true
-      fail-on-empty-beans: false
+    date-format: yyyy-MM-dd HH:mm:ss
+  resources:
+    static-locations: classpath:/static/,classpath:/views/
+
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-knife4j:
-  enable: true

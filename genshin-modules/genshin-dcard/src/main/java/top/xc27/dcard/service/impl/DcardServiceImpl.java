@@ -1,9 +1,7 @@
 package top.xc27.dcard.service.impl;
 
-import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.util.ObjUtil;
 import cn.hutool.core.util.StrUtil;
-import cn.hutool.http.HttpRequest;
 import cn.hutool.json.JSONUtil;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
@@ -13,20 +11,16 @@ import org.apache.http.client.utils.HttpClientUtils;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
-import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
-import top.xc27.dcard.PoolInfoVo;
+import top.xc27.dcard.service.DcardPoolInfoService;
 import top.xc27.dcard.service.DcardService;
-import top.xc27.dcard.service.PoolInfoService;
-import top.xc27.dcard.service.UserInfoService;
+import top.xc27.dcard.service.DcardUserInfoService;
 import top.xc27.dcard.vo.PoolData;
 import top.xc27.dcard.vo.PoolDataVo;
 import top.xc27.util.ConvertUrlUtil;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,9 +29,9 @@ import java.util.Map;
 public class DcardServiceImpl implements DcardService {
 
     @Autowired
-    private UserInfoService userInfoService;
+    private DcardUserInfoService dcardUserInfoService;
     @Autowired
-    private PoolInfoService poolInfoService;
+    private DcardPoolInfoService dcardPoolInfoService;
 
     @Override
     public String analyseData(String url, HttpServletRequest servletRequest) {
@@ -55,7 +49,7 @@ public class DcardServiceImpl implements DcardService {
                             for (PoolData poolData : poolDatas) {
                                 lastId = poolData.getId();
                                 uid = poolData.getUid();
-                                if (!poolInfoService.savePoolInfoVo(poolData,pool[i])) {
+                                if (!dcardPoolInfoService.saveDcardPoolInfoVo(poolData,pool[i])) {
                                     throw new RuntimeException();
                                 }
                             }
@@ -66,7 +60,7 @@ public class DcardServiceImpl implements DcardService {
                     }
                 }
             }
-            if(!userInfoService.saveUserInfoVo(uid,servletRequest)){
+            if(!dcardUserInfoService.saveDcardUserInfoVo(uid,servletRequest)){
                 throw new RuntimeException();
             }
         }
