@@ -1,38 +1,34 @@
 package top.xc27.dcard.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import top.xc27.common.core.result.Result;
 import top.xc27.common.core.result.ResultList;
-import top.xc27.dcard.PoolInfoVo;
-import top.xc27.dcard.service.PoolInfoService;
-
-import java.util.List;
+import top.xc27.dcard.service.DcardPoolInfoService;
+import top.xc27.dcard.vo.DcardPoolInfoVo;
 
 /**
- * 抽到的卡池信息表
+ * 抽到的卡池信息
  *
  * @author Pcling
  * @email lingcglib@163.com
- * @date 2023-04-02 16:59:00
+ * @date 2023-04-03 10:55:44
  */
 @RestController
-@RequestMapping("/dcard/poolinfo")
-@Api(value = "dcard_抽到的卡池信息表", tags = {"dcard_抽到的卡池信息表"})
-public class PoolInfoController {
+@RequestMapping("/dcard/dcardpoolinfo")
+@Api(value = "dcard_抽到的卡池信息", tags = {"dcard_抽到的卡池信息"})
+public class DcardPoolInfoController {
 
     @Autowired
-    private PoolInfoService poolInfoService;
+    private DcardPoolInfoService poolInfoService;
 
     /**
      * pageInfo 分页查询
      */
     @PostMapping("/queryPage")
     @ApiOperation(value = "dcard_抽到的卡池信息表分页接口")
-    public ResultList<PoolInfoVo> queryPage(@RequestBody PoolInfoVo poolInfo){
+    public ResultList<DcardPoolInfoVo> queryPage(@RequestBody DcardPoolInfoVo poolInfo){
         return ResultList.success(poolInfoService.queryPage(poolInfo));
     }
 }

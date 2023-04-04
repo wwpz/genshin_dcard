@@ -2,24 +2,24 @@ package top.xc27.dcard.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import top.xc27.dcard.vo.UserInfoVo;
+import top.xc27.dcard.vo.DcardUserInfoVo;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
- * dcard_userinfo信息
+ * uid用户信息
  *
  * @author Pcling
  * @email lingcglib@163.com
- * @date 2023-04-02 18:42:15
+ * @date 2023-04-03 10:55:44
  */
-public interface UserInfoService extends IService<UserInfoVo> {
+public interface DcardUserInfoService extends IService<DcardUserInfoVo> {
 
     void userInfoDelete(List<String> ids);
 
-    IPage<UserInfoVo> queryPage(UserInfoVo userInfo);
+    IPage<DcardUserInfoVo> queryPage(DcardUserInfoVo userInfo);
 
-    boolean saveUserInfoVo(String uid, HttpServletRequest request);
+    boolean saveDcardUserInfoVo(String uid, HttpServletRequest request);
 }
 

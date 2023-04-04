@@ -4,8 +4,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DcardApplication {
+public class ServiceDcardApplication {
     public static void main(String[] args) {
-        SpringApplication.run(DcardApplication.class,args);
+        SpringApplication.run(ServiceDcardApplication.class,args);
     }
 }

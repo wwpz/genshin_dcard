@@ -12,22 +12,22 @@ import lombok.Getter;
 public enum ResultCode {
 
     /* 通用状态码 */
-    SUCCESS("200", "请求成功!" ),
-    ERROR("-9999","请求失败!"),
-    NOT_FOUND("404", "请求的资源不存在!"),
-    SERVER_ERROR("500", "服务器内部错误!"),
+    SUCCESS(200, "请求成功!" ),
+    ERROR(-9999,"请求失败!"),
+    NOT_FOUND(404, "请求的资源不存在!"),
+    SERVER_ERROR(500, "服务器内部错误!"),
 
     /* 业务通用状态码 */
-    PARAMETER_EXCEPTION("10001", "参数校验异常!"),
+    PARAMETER_EXCEPTION(10001, "参数校验异常!"),
 
     /* system 模块状态码 */
-    USER_NOT_EXIST_ERROR("11001", "用户不存在!")
+    USER_NOT_EXIST_ERROR(11001, "用户不存在!")
     ;
 
-    private final String code;
+    private final Integer code;
     private final String message;
 
-    public String code() {
+    public Integer code() {
         return this.code;
     }
 
@@ -35,7 +35,7 @@ public enum ResultCode {
         return this.message;
     }
 
-    ResultCode(String code, String message) {
+    ResultCode(Integer code, String message) {
         this.code = code;
         this.message = message;
     }

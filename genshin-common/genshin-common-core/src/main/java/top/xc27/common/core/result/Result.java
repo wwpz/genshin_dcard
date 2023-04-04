@@ -9,8 +9,8 @@ public class Result<T> {
 
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private T object;
+    private Integer code;
     private String message;
-    private String code;
 
     public Result() {
     }
@@ -25,7 +25,7 @@ public class Result<T> {
         this.message = message;
     }
 
-    private Result(String code,String message) {
+    private Result(Integer code,String message) {
         this.code = code;
         this.message = message;
     }
@@ -56,7 +56,7 @@ public class Result<T> {
         return new Result<>(resultCode,message);
     }
 
-    public static <T> Result<T> fail(String code,String message) {
+    public static <T> Result<T> fail(Integer code,String message) {
         return new Result<>(code,message);
     }
 

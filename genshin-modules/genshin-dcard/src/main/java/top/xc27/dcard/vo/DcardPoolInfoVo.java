@@ -1,4 +1,4 @@
-package top.xc27.dcard;
+package top.xc27.dcard.vo;
 
 import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.annotations.ApiModelProperty;
@@ -12,15 +12,16 @@ import lombok.Data;
 import top.xc27.common.core.basic.BasicQueryForPage;
 
 /**
+ * 抽到的卡池信息
  *
  * @author Pcling
  * @email lingcglib@163.com
- * @date 2023-04-02 16:59:00
+ * @date 2023-04-03 10:55:44
  */
 @Data
-@TableName("pool_info")
+@TableName("dcard_pool_info")
 @EqualsAndHashCode(callSuper = true)
-public class PoolInfoVo extends BasicQueryForPage implements Serializable {
+public class DcardPoolInfoVo extends BasicQueryForPage implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -35,14 +36,14 @@ public class PoolInfoVo extends BasicQueryForPage implements Serializable {
     @ApiModelProperty(value = "uid")
     private String uid;
     /**
-     * uid
+     * 名称
      */
-    @ApiModelProperty(value = "name")
+    @ApiModelProperty(value = "名称")
     private String name;
     /**
      * 所抽池
      */
-    @ApiModelProperty(value = "pool")
+    @ApiModelProperty(value = "所抽池")
     private String pool;
     /**
      * 星级

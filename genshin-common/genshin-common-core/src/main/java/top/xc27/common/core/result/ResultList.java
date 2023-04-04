@@ -10,7 +10,7 @@ import java.util.Collection;
 @AllArgsConstructor
 public class ResultList<T> {
 
-    private String code;
+    private Integer code;
     private String message;
     private Long total = 0L;
     private Collection<T> objects;
