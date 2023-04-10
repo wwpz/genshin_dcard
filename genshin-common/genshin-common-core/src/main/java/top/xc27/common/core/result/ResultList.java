@@ -13,7 +13,7 @@ public class ResultList<T> {
     private Integer code;
     private String message;
     private Long total = 0L;
-    private Collection<T> objects;
+    private Collection<T> object;
 
     private ResultList(ResultCode resultCode) {
         this.code = resultCode.getCode();
@@ -23,22 +23,22 @@ public class ResultList<T> {
     private ResultList(IPage<T> page, ResultCode resultCode) {
         this.code = resultCode.getCode();
         this.message = resultCode.getMessage();
-        this.objects = page.getRecords();
+        this.object = page.getRecords();
         this.total = page.getTotal();
     }
 
-    private ResultList(Collection<T> objects, ResultCode resultCode) {
+    private ResultList(Collection<T> object, ResultCode resultCode) {
         this.code = resultCode.getCode();
         this.message = resultCode.getMessage();
-        this.objects = objects;
+        this.object = object;
     }
 
     public static <T> ResultList<T> success(IPage<T> page) {
         return new ResultList<>(page, ResultCode.SUCCESS);
     }
 
-    public static <T> ResultList<T> success(Collection<T> objects) {
-        return new ResultList<>(objects, ResultCode.SUCCESS);
+    public static <T> ResultList<T> success(Collection<T> object) {
+        return new ResultList<>(object, ResultCode.SUCCESS);
     }
 
     public static <T> ResultList<T> fail() {
