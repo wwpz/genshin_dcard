@@ -1,15 +1,22 @@
 import request from '@/utils/request'
 
 export default {
-  tree() {
+  qryTree() {
     return request({
-      url: '/sys/dictType/tree/',
+      url: '/sys/dict/tree/',
       method: 'GET'
     })
   },
   qryTable(data){
     return request({
       url: '/sys/dictType/page/',
+      method: 'POST',
+      data: data
+    })
+  },
+  svDictType(data){
+    return request({
+      url: '/sys/dictType/add/',
       method: 'POST',
       data: data
     })
